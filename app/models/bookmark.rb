@@ -1,6 +1,7 @@
 class Bookmark < ApplicationRecord
   belongs_to :recipe
+  belongs_to :recipe
   belongs_to :category
-
-  validates :
+  validates :comment, length: { minimum: 6 }
+  validates :recipe, uniqueness: { scope: :category, message: "This recipe is already bookmarked in this category." }
 end
